@@ -32,7 +32,7 @@ function useTypewriterLoop() {
         timer = setTimeout(() => tick(ROLE_TEXT.slice(0, value.length + 1), false), TYPE_MS)
       }
     }
-    timer = setTimeout(() => tick(ROLE_TEXT.slice(0, 1), false), TYPE_MS)
+    timer = setTimeout(() => tick(ROLE_TEXT.slice(0, 1), false), 300)
     return () => { cancelled = true; clearTimeout(timer) }
   }, [])
   return text
@@ -53,7 +53,7 @@ function Hero() {
           <h1>
             {d.name}
             <br />
-            <span className="grad typewriter">
+            <span className="typewriter">
               <span className="sr-only">{ROLE_TEXT}</span>
               <span className="typewriter-ghost" aria-hidden="true">{ROLE_TEXT}</span>
               <span className="typewriter-live" aria-hidden="true">{typed}<span className="typewriter-cursor">|</span></span>
