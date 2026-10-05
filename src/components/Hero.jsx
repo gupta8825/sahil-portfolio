@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { portfolioData } from '../data/portfolioData'
+import HeroBackgroundLazy from './HeroBackgroundLazy'
 
 const ROLE_TEXT = 'MERN Stack Full Stack Developer'
 const TYPE_MS = 70
@@ -42,9 +43,11 @@ function Hero() {
   const d = portfolioData
   const typed = useTypewriterLoop()
   return (
-    <header className="hero" id="top">
-      <div className="container hero-inner">
+    <header className="hero" id="top" style={{ position: 'relative', overflow: 'hidden' }}>
+      <HeroBackgroundLazy />
+      <div className="container hero-inner" style={{ position: 'relative' }}>
         <motion.div
+          style={{ position: 'relative', zIndex: 1 }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -73,6 +76,7 @@ function Hero() {
         </motion.div>
         <motion.div
           className="hero-visual"
+          style={{ position: 'relative', zIndex: 1 }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}

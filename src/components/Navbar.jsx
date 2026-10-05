@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { portfolioData } from '../data/portfolioData'
+
+gsap.registerPlugin(ScrollToPlugin)
 
 function Navbar() {
   const [open, setOpen] = useState(false)
@@ -22,10 +26,27 @@ function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    setOpen(false)
+    const target = document.querySelector(href)
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (target) {
+      gsap.to(window, {
+        duration: reduce ? 0 : 0.9,
+        ease: 'power2.inOut',
+        scrollTo: { y: target, offsetY: 64 },
+        onComplete: () => {
+          window.history.pushState(null, '', href)
+        },
+      })
+    }
+  }
+
   return (
     <nav className="navbar" aria-label="Main navigation">
       <div className="container navbar-inner">
-        <a href="#top" className="logo" onClick={() => setOpen(false)}>
+        <a href="#top" className="logo" onClick={(e) => handleNavClick(e, '#top')}>
           Sahil<span>.dev</span>
         </a>
         <button
@@ -42,7 +63,7 @@ function Navbar() {
               <a
                 href={link.href}
                 className={active === link.href.slice(1) ? 'active' : ''}
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>

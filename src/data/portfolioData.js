@@ -25,16 +25,24 @@ export const portfolioData = {
 
   skills: [
     {
-      category: 'Languages',
-      items: ['JavaScript', 'Python', 'C', 'HTML/CSS', 'SQL'],
+      category: 'Programming Languages',
+      items: ['JavaScript', 'Python', 'Java', 'C++'],
     },
     {
-      category: 'Frameworks & Libraries',
-      items: ['React.js', 'Express.js', 'Node.js', 'MongoDB', 'Bootstrap', 'Tailwind CSS', 'Pandas', 'Matplotlib', 'NumPy'],
+      category: 'Frontend',
+      items: ['HTML', 'CSS', 'React.js', 'Tailwind CSS', 'Bootstrap', 'Redux Toolkit', 'React Router'],
     },
     {
-      category: 'Developer Tools',
-      items: ['VS Code', 'Jupyter', 'Cursor', 'GitHub'],
+      category: 'Backend',
+      items: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication'],
+    },
+    {
+      category: 'Database',
+      items: ['MongoDB', 'Mongoose', 'MySQL'],
+    },
+    {
+      category: 'Tools',
+      items: ['Git', 'GitHub', 'Postman', 'VS Code', 'Vercel'],
     },
   ],
 
